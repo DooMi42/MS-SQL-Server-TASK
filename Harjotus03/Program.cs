@@ -1,15 +1,42 @@
-﻿using Harjotus03;
+﻿using System;
+using Harjotus03;
 
-var nickname = "Jack";
-var pincode = "0011";
+string choice;
 
-if (AddLogins(pincode, nickname))
+var nickname = "Teero123";
+var pincode = "5656";
+
+Console.WriteLine("Mitä haluat tehdä?");
+Console.WriteLine("1 - Lisää uusi tuote\n" +
+    "2 - Poista pelaaja\n" +
+    "3 - Tulosta pelaajien määrä\n" +
+    "4 - Muokkaa pelaajanimeä\n" +
+    "5 - Lopeta sovellus");
+choice = Console.ReadLine();
+
+if (choice == "1")
 {
-    Console.WriteLine("Tallennus onnistui.");
+    AddLogins("6060", "Tuomas");
+}
+else if (choice == "2")
+{
+    DeleteLogins("6060");
+}
+else if (choice == "3")
+{
+    QueringLogins();
+}
+else if (choice == "4")
+{
+    ChangeNickname("Taavo", "7000");
+}
+else if (choice == "5")
+{
+    return;
 }
 else
 {
-    Console.WriteLine("Tallennus ei onnistunut.");
+    Console.WriteLine("Not valid number");
 }
 
 static void QueringLogins()
@@ -57,8 +84,8 @@ static bool AddLogins(string newPincode, string newNickname)
     {
         Login login = new()
         {
-            nickname = newNickname,
-            pincode = newPincode
+            pincode = newPincode,
+            nickname = newNickname
         };
         pelitietokanta.Logins?.Add(login);
 
